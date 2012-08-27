@@ -1210,7 +1210,7 @@ after_bundler do
     copy_from_repo 'app/controllers/application_controller.rb', :repo => 'https://raw.github.com/RailsApps/rails3-mongoid-omniauth/master/'
   end
   if prefer :authorization, 'cancan'
-    inject_into_file 'app/controllers/application_controller.rb', :before => 'end' do <<-RUBY
+    inject_into_file 'app/controllers/application_controller.rb', :before => "\nend" do <<-RUBY
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
